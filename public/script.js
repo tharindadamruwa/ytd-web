@@ -1,63 +1,64 @@
-const host = "https://ytd-web.herokuapp.com/";
+const host = "http://localhost:5000/";
 
-document.querySelector("#get-video-info-btn").addEventListener("click",function(){
+document.querySelector("#get-video-info-btn").addEventListener("click", function () {
+  let videoURL = document.querySelector("#videoURL").value.trim();
+  if (videoURL.length == 0) {
+    alert("Please enter a YouTube video link");
+    return;
+  }
 
-    let videoURL = document.querySelector("#videoURL").value.trim();
-    
-    if(videoURL.length == 0) {
+  document.querySelector(".loading").style.display = "flex";
 
-        alert("please enter Youtube video link");
-        return;
+  fetch(host + "videoInfo?videoURL=" + videoURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
 
-    }
+      let detailsNodes = {
+        thumbnail: document.querySelector(".video-data .thumbnail img"),
+        title: document.querySelector(".video-data .info h2"),
+        description: document.querySelector(".video-data .info p"),
+        videoURL: document.querySelector(".video-data .controls #video-url"),
+        qualitySelect: document.querySelector("#quality-select"),
+      };
 
-    document.querySelector(".loading").style.display = "flex";
+      detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length - 1].url;
+      detailsNodes.title.innerText = data.videoDetails.title;
+      detailsNodes.description.innerText = data.videoDetails.description;
+      detailsNodes.videoURL.value = videoURL;
 
-    fetch(host+"videoInfo?videoURL="+videoURL).then(function(response){
+      // Populate the quality options
+      detailsNodes.qualitySelect.innerHTML = "";
+      for (let i = 0; i < data.formats.length; i++) {
+        const format = data.formats[i];
+        const option = document.createElement("option");
+        option.value = format.itag;
+        option.text = format.qualityLabel || format.resolution;
+        detailsNodes.qualitySelect.appendChild(option);
+      }
 
-        return response.json();
-
-    }).then(function(data){
-
-        console.log(data);
-
-        let detailsNodes = {
-
-            thumbnail:document.querySelector(".video-data .thumbnail img"),
-            title:document.querySelector(".video-data .info h2"),
-            description:document.querySelector(".video-data .info p"),
-            videoURL:document.querySelector(".video-data .controls #video-url")
-
-        }
-
-        let html = "";
-
-        for (let i = 0; i < data.formats.length; i++) {
-            
-            detailsNodes.thumbnail.src = data.videoDetails.thumbnails[data.videoDetails.thumbnails.length -1].url;
-            detailsNodes.title.innerText = data.videoDetails.title;
-            detailsNodes.description.innerText = data.videoDetails.description;
-
-            detailsNodes.videoURL.value = videoURL;
-            
-            document.querySelector(".video-data").style.display = "block";
-
-            document.querySelector(".video-data").scrollIntoView({
-
-                behavior:"smooth"
-
-            });
-
-            document.querySelector(".loading").style.display = "none";
-
-        }
-
-    }).catch(function(error){
-
-        alert("Something Wen't Wrong");
-
-        document.querySelector(".loading").style.display = "none";
-
+      document.querySelector(".video-data").style.display = "block";
+      document.querySelector(".controls").style.display = "flex";
+      document.querySelector(".video-data").scrollIntoView({ behavior: "smooth" });
+      document.querySelector(".loading").style.display = "none";
+    })
+    .catch(function (error) {
+      alert("Something went wrong");
+      document.querySelector(".loading").style.display = "none";
     });
+});
 
+document.querySelector("#download-btn").addEventListener("click", function (event) {
+  event.preventDefault();
+  let videoURL = document.querySelector("#videoURL").value.trim();
+  let selectedQuality = document.querySelector("#quality-select").value;
+
+  if (videoURL.length == 0 || selectedQuality.length == 0) {
+    alert("Please enter a YouTube video link and select a quality");
+    return;
+  }
+  const downloadURL = host + "download?url=" + encodeURIComponent(videoURL) + "&itag=" + selectedQuality;
+  window.location.href = downloadURL;
 });

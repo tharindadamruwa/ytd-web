@@ -1,92 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>YT-Downloader</title>
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
 
-</head>
-
-<body>
-
-    <div class="header">
-
-        YouTube downloader
-
-    </div>
+  <body>
+    <div class="header">YouTube downloader</div>
 
     <div class="form">
-
-        <div class="form-element">
-
-            <form method="post">
-
-                <label for="videoURL">Enter video url</label>
-
-                <input type="text" placeholder="url" id="videoURL">
-
-            </form>
-
-        </div>
-
-        <div class="form-element">
-
-            <button id="get-video-info-btn">
-
-                Get video data
-
-            </button>
-
-        </div>
-
+      <div class="form-element">
+        <form method="post">
+          <label for="videoURL">Enter video URL</label>
+          <input type="text" placeholder="URL" id="videoURL" />
+        </form>
+      </div>
+      <div class="form-element">
+        <button id="get-video-info-btn">Get video data</button>
+      </div>
     </div>
 
     <div class="loading"></div>
 
     <div class="video-data">
-
-        <div class="data">
-
-            <div class="thumbnail">
-
-                <img>
-
-            </div>
-
-            <div class="info">
-
-                <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, itaque.</h2>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ea error eos expedita deserunt
-                    voluptatem, nihil hic excepturi reprehenderit neque sunt aliquid consectetur corrupti adipisci.
-                    Dolore!</p>
-
-            </div>
-
+      <div class="data">
+        <div class="thumbnail">
+          <img src="" alt="" />
         </div>
+        <div class="info">
+          <h2>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+            itaque.
+          </h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ea
+            error eos expedita deserunt voluptatem, nihil hic excepturi
+            reprehenderit neque sunt aliquid consectetur corrupti adipisci.
+            Dolore!
+          </p>
+        </div>
+      </div>
 
-        <form method="get" action="https://ytd-web.herokuapp.com/download">
-
-            <div class="controls">
-
-                <input type="hidden" name="url" id="video-url">
-                <button type="submit" id="download-btn" value="Download">Download</button>
-
-            </div>
-
-        </form>
-
+      <form method="get" action="http://localhost:5000/download">
+        <div class="controls">
+          <input type="hidden" name="url" id="video-url" />
+          <select name="itag" id="quality-select"></select>
+          <button type="submit" id="download-btn" value="Download">
+            Download
+          </button>
+        </div>
+      </form>
     </div>
 
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
