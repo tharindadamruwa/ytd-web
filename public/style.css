@@ -1,225 +1,243 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f8f8f8; /* Light Gray Color */
+}
+
+.header {
+  margin-top: 100px;
+  height: 50px;
+  color: #3f3f3f; /* Primary Color (Red) */
+  text-align: center;
+  line-height: 50px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.form {
+  margin-top: 75px;
+}
+
+.form .form-element {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.form .form-element.er{
+  margin-top: 20px;
+  display: none;
+  justify-content: center;
+  align-content: center;
+}
+.form .form-element label {
+  display: block;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #3b71ca;
+}
+
+.form .form-element input {
+  padding: 10px;
+  outline: none;
+  border: 2px solid #9fa6b2; /* Primary Color (Red) */
+  outline: none;
+  font-size: 15px;
+  width: 350px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  font-weight: 200;
+  text-align: center;
+  font-style: italic;
+  color: #555; /* Gray Color */
+}
+
+.form .form-element button {
+  width: 350px;
+  height: 40px;
+  background: #14a44d; /* Primary Color (Red) */
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.form .form-element button:hover {
+  background: #14a44ea8; /* Darker Red Color */
+  color: #fff;
+}
+
+.form .form-element .error {
+  background: #ff607abb;
+  color: #fff;
+  width: 350px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+.video-data {
+  word-wrap: break-word;
+  width: 350px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 7px;
+  display: none;
+  background-color: #a0c4ff75;
+  box-shadow: 0 0 10px rgba(160, 196, 255, 0.75); /* Box shadow with rgba color */
+}
+
+.video-data .data .thumbnail img {
+  width: 100%;
+}
+
+.video-data .data .info {
+  margin-top: 10px;
+}
+
+.video-data .data .info h2 {
+  font-size: 18px;
+  margin-bottom: 19px;
+  color: #222; /* Dark Gray Color */
+  text-align: justify;
+}
+
+.video-data .data .info p {
+  font-size: 16px;
+  text-align: justify;
+  color: #555; /* Gray Color */
+}
+
+.video-data .controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.video-data .controls #download-btn {
+  width: 50%;
+  height: 40px;
+  border: 1px solid #dc4c64; /* Primary Color (Red) */
+  color: #fff;
+  background: #dc4c64; /* Primary Color (Red) */
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.video-data .controls #download-btn:hover {
+  cursor: pointer;
+  background: #dc4c64ad; /* White Color */
+  border: none; /* Light Gray Color */
+}
+
+.loading {
+  margin-top: 40px;
+  display: none;
+  justify-content: center;
+}
+
+.loading::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  border: 10px solid #dddddd; /* Light Gray Color */
+  border-top-color: #3b71ca; /* Primary Color (Red) */
+  border-bottom-color: #3b71ca; /* Primary Color (Red) */
+  border-radius: 50%;
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
   }
-  
-  body {
-    background: #f8f8f8; /* Light Gray Color */
-  }
-  
-  .header {
-    margin-top: 100px;
-    height: 50px;
-    color: #3f3f3f; /* Primary Color (Red) */
-    text-align: center;
-    line-height: 50px;
-    font-size: 25px;
-    font-weight: bold;
-  }
-  
-  .form {
-    margin-top: 75px;
-  }
-  
-  .form .form-element {
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-  
-  .form .form-element label {
-    display: block;
-    margin-bottom: 5px;
-    text-align: center;
-    font-size: 15px;
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #3B71CA;
-  }
-  
+}
+
+.quality-select {
+  width: 50%;
+  margin: 0 10px;
+  padding: 8px;
+  border: 1px solid #f5a623; /* Light Warning Color */
+  border-radius: 4px;
+  background-color: #e4a11b; /* White Color */
+  color: #111; /* Black Color */
+}
+
+.quality-select option {
+  background: #e4a11b;
+}
+
+@media (max-width: 582px) {
   .form .form-element input {
-    padding: 10px;
-    outline: none;
-    border: 2px solid #9FA6B2; /* Primary Color (Red) */
-    outline: none;
-    font-size: 15px;
-    width: 350px;
-    border-radius: 3px;
-    margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    font-weight: 200;
-    text-align: center;
-    font-style: italic;
-    color: #555; /* Gray Color */
+    width: 450px;
   }
-  
+
+  .form .form-element button {
+    width: 450px;
+  }
+
+  .video-data {
+    width: 450px;
+  }
+}
+
+@media (max-width: 540px) {
+  .form .form-element input {
+    width: 400px;
+  }
+
+  .form .form-element button {
+    width: 400px;
+  }
+
+  .video-data {
+    width: 400px;
+  }
+}
+
+@media (max-width: 470px) {
+  .form .form-element input {
+    width: 350px;
+  }
+
   .form .form-element button {
     width: 350px;
-    height: 40px;
-    background: #14A44D; /* Primary Color (Red) */
-    color: #fff;
-    border: none;
-    outline: none;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    cursor: pointer;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: 15px;
   }
-  
-  .form .form-element button:hover {
-    background: #14a44ea8; /* Darker Red Color */
-    color: #fff;
-  }
-  
+
   .video-data {
     width: 350px;
-    margin: 60px auto;
-    border: 1px solid #ccc; /* Gray Color */
-    padding: 20px;
-    border-radius: 7px;
-    display: none;
-    background-color: #fff; /* White Color */
   }
-  
-  .video-data .data .thumbnail img {
-    width: 100%;
+}
+
+@media (max-width: 440px) {
+  .form .form-element input {
+    width: 300px;
   }
-  
-  .video-data .data .info {
-    margin-top: 10px;
+
+  .form .form-element button {
+    width: 300px;
   }
-  
-  .video-data .data .info h2 {
-    font-size: 18px;
-    margin-bottom: 19px;
-    color: #222; /* Dark Gray Color */
-    text-align: justify;
+
+  .video-data {
+    width: 300px;
   }
-  
-  .video-data .data .info p {
-    font-size: 16px;
-    text-align: justify;
-    color: #555; /* Gray Color */
-  }
-  
-  .video-data .controls {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .video-data .controls #download-btn {
-    width: 50%;
-    height: 40px;
-    border: 1px solid #DC4C64; /* Primary Color (Red) */
-    color: #fff;
-    background: #DC4C64; /* Primary Color (Red) */
-    font-weight: bold;
-    border-radius: 5px;
-  }
-  
-  .video-data .controls #download-btn:hover {
-    background: #dc4c64ad; /* White Color */
-    border: none; /* Light Gray Color */
-  }
-  
-  .loading {
-    margin-top: 40px;
-    display: none;
-    justify-content: center;
-  }
-  
-  .loading::after {
-    content: "";
-    width: 70px;
-    height: 70px;
-    border: 10px solid #dddddd; /* Light Gray Color */
-    border-top-color: #3B71CA; /* Primary Color (Red) */
-    border-bottom-color: #3B71CA; /* Primary Color (Red) */
-    border-radius: 50%;
-    animation: loading 1s ease infinite;
-  }
-  
-  @keyframes loading {
-    to {
-      transform: rotate(1turn);
-    }
-  }
-  
-  .quality-select {
-    width: 50%;
-    margin: 0 10px;
-    padding: 8px;
-    border: 1px solid #f5a623; /* Light Warning Color */
-    border-radius: 4px;
-    background-color: #E4A11B; /* White Color */
-    color: #111; /* Black Color */
-  }
-  
-  .quality-select option {
-    background:#E4A11B;
-  }
-  
-  @media (max-width: 582px) {
-    .form .form-element input {
-      width: 450px;
-    }
-  
-    .form .form-element button {
-      width: 450px;
-    }
-  
-    .video-data {
-      width: 450px;
-    }
-  }
-  
-  @media (max-width: 540px) {
-    .form .form-element input {
-      width: 400px;
-    }
-  
-    .form .form-element button {
-      width: 400px;
-    }
-  
-    .video-data {
-      width: 400px;
-    }
-  }
-  
-  @media (max-width: 470px) {
-    .form .form-element input {
-      width: 350px;
-    }
-  
-    .form .form-element button {
-      width: 350px;
-    }
-  
-    .video-data {
-      width: 350px;
-    }
-  }
-  
-  @media (max-width: 440px) {
-    .form .form-element input {
-      width: 300px;
-    }
-  
-    .form .form-element button {
-      width: 300px;
-    }
-  
-    .video-data {
-      width: 300px;
-    }
-  }
-  
+}

@@ -2,6 +2,17 @@ const express = require("express");
 const ytdl = require("ytdl-core");
 const app = express();
 
+const isYouTubeLink = (url) => {
+  const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+/;
+
+  // Check if the URL matches the YouTube regex
+  if (youtubeRegex.test(url)) {
+    return true; // It is a YouTube link
+  } else {
+    return false; // It is not a YouTube link
+  }
+};
+
 app.use(express.json());
 app.use(express.static("public"));
 
@@ -11,8 +22,13 @@ app.get("/", function (request, response) {
 
 app.get("/videoInfo", async function (request, response) {
   const videoURL = request.query.videoURL;
-  const info = await ytdl.getInfo(videoURL);
-  response.status(200).json(info);
+  if (isYouTubeLink(videoURL)) {
+    const info = await ytdl.getInfo(videoURL);
+    response.status(200).json(info);
+  } else {
+    const err = "noytlink";
+    response.status(200).json(err);
+  }
 });
 
 app.get("/download", (request, response) => {
