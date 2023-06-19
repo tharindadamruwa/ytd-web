@@ -1,4 +1,4 @@
-const host = "http://localhost:5000/";
+const host = "https://ytd-web.netlify.app/";
 
 document
   .querySelector("#get-video-info-btn")
