@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node code.js"
+    "start": "node code.js",
+    "build": "echo 'no req build'"
   },
   "keywords": [],
   "author": "",
