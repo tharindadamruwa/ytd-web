@@ -1,4 +1,4 @@
-const host = "https://ytd-8j29.onrender.com";
+const host = "https://ytd-8j29.onrender.com/";
 
 document
   .querySelector("#get-video-info-btn")
